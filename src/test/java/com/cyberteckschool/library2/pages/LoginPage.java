@@ -36,25 +36,19 @@ public class LoginPage extends BasePage {
 
     public void login() {
         String usernameValue = ConfigurationReader.getProperty("librarian.username");
-        String passwordValue = ConfigurationReader.getProperty("password");
+        String passwordValue = ConfigurationReader.getProperty("librarian.password");
 
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
     }
 
-    public void login(String role) {
-        String usernameValue = "";
-        String passwordValue = ConfigurationReader.getProperty("password");
-
-        if (role.equalsIgnoreCase("student")) {
-            usernameValue = ConfigurationReader.getProperty("student.username");
-        } else if (role.equalsIgnoreCase("driver")) {
-            usernameValue = ConfigurationReader.getProperty("driver.username");
-        } else {
-            usernameValue = ConfigurationReader.getProperty("librarian.username");
-        }
+    public void login2() {
+        String usernameValue = ConfigurationReader.getProperty("student.username");
+        String passwordValue = ConfigurationReader.getProperty("student.password");
 
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
     }
+
+
 }
