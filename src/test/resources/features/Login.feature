@@ -4,25 +4,18 @@ Feature: Login
   Background:
     Given user is on the landing page
 
-  @Scenario1:
-  Scenario: Login as a librarian
-    When user logs in as a librarian
-    Then user should be able to see Dashboard
+  @s_o
+  Scenario Outline: Parametrized login as <role>
+    When user logs in as a "<role>"
+    Then user should see dashboard page
 
-  @Scenario2:
-  Scenario: Login as a student
-    When user logs in as a store manager
-    Then user should be able to see Dashboard
-
-
-  @Scenario_Outline
-  Scenario Outline: Login under different credentials as <username>
-    When user enters "<username>" and "<password>"
-    Then user should be able to see Dashboard
     Examples:
-      |username| password|
-      |librarian54@library |1HFI6LjC|
-      |student53@library |LZdIkogy|
+      | role          |
+      | librarian |
+      | student |
+
+
+
   @negative_login @smoke
   Scenario: Invalid password
     When user logs in with "student@library" username and "wrong" password
